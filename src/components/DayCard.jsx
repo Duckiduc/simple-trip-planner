@@ -84,76 +84,79 @@ const ActivityCard = ({ activity, onUpdate, onDelete }) => {
     return (
       <Card 
         size="small" 
+        className="activity-edit-card"
         style={{ marginBottom: 12, border: '2px dashed #1890ff' }}
         bodyStyle={{ padding: 16 }}
       >
-        <Space direction="vertical" style={{ width: '100%' }} size="middle">
-          <Row gutter={16}>
-            <Col span={12}>
-              <Input
-                placeholder="Activity title"
-                value={editData.title}
-                onChange={(e) => setEditData({ ...editData, title: e.target.value })}
-              />
-            </Col>
-            <Col span={6}>
-              <TimePicker
-                format="HH:mm"
-                value={editData.time}
-                onChange={(time) => setEditData({ ...editData, time })}
-                placeholder="Time"
-                style={{ width: '100%' }}
-              />
-            </Col>
-            <Col span={6}>
-              <Select
-                placeholder="Category"
-                value={editData.category}
-                onChange={(category) => setEditData({ ...editData, category })}
-                style={{ width: '100%' }}
-              >
-                <Option value="Food">🍽️ Food</Option>
-                <Option value="Activity">🎯 Activity</Option>
-                <Option value="Transport">🚗 Transport</Option>
-                <Option value="Accommodation">🏨 Accommodation</Option>
-                <Option value="Sightseeing">📸 Sightseeing</Option>
-                <Option value="Shopping">🛍️ Shopping</Option>
-                <Option value="Other">📌 Other</Option>
-              </Select>
-            </Col>
-          </Row>
+        <div className="activity-edit-form">
+          <div className="activity-edit-row">
+            <Input
+              placeholder="Activity title *"
+              value={editData.title}
+              onChange={(e) => setEditData({ ...editData, title: e.target.value })}
+              className="activity-title-input"
+            />
+          </div>
           
-          <Input
-            placeholder="Location (optional)"
-            value={editData.location}
-            onChange={(e) => setEditData({ ...editData, location: e.target.value })}
-          />
+          <div className="activity-edit-row activity-meta-row">
+            <TimePicker
+              format="HH:mm"
+              value={editData.time}
+              onChange={(time) => setEditData({ ...editData, time })}
+              placeholder="Time"
+              className="activity-time-picker"
+            />
+            <Select
+              placeholder="Category"
+              value={editData.category}
+              onChange={(category) => setEditData({ ...editData, category })}
+              className="activity-category-select"
+            >
+              <Option value="Food">🍽️ Food</Option>
+              <Option value="Activity">🎯 Activity</Option>
+              <Option value="Transport">🚗 Transport</Option>
+              <Option value="Accommodation">🏨 Accommodation</Option>
+              <Option value="Sightseeing">📸 Sightseeing</Option>
+              <Option value="Shopping">🛍️ Shopping</Option>
+              <Option value="Other">📌 Other</Option>
+            </Select>
+          </div>
           
-          <TextArea
-            placeholder="Description"
-            value={editData.description}
-            onChange={(e) => setEditData({ ...editData, description: e.target.value })}
-            rows={2}
-          />
+          <div className="activity-edit-row">
+            <Input
+              placeholder="Location (optional)"
+              value={editData.location}
+              onChange={(e) => setEditData({ ...editData, location: e.target.value })}
+            />
+          </div>
           
-          <TextArea
-            placeholder="Additional notes (optional)"
-            value={editData.notes}
-            onChange={(e) => setEditData({ ...editData, notes: e.target.value })}
-            rows={2}
-          />
+          <div className="activity-edit-row">
+            <TextArea
+              placeholder="Description"
+              value={editData.description}
+              onChange={(e) => setEditData({ ...editData, description: e.target.value })}
+              rows={2}
+            />
+          </div>
           
-          <Row justify="end">
-            <Space>
-              <Button icon={<SaveOutlined />} type="primary" onClick={handleSave}>
-                Save
-              </Button>
-              <Button icon={<CloseOutlined />} onClick={handleCancel}>
-                Cancel
-              </Button>
-            </Space>
-          </Row>
-        </Space>
+          <div className="activity-edit-row">
+            <TextArea
+              placeholder="Additional notes (optional)"
+              value={editData.notes}
+              onChange={(e) => setEditData({ ...editData, notes: e.target.value })}
+              rows={2}
+            />
+          </div>
+          
+          <div className="activity-edit-actions">
+            <Button icon={<SaveOutlined />} type="primary" onClick={handleSave}>
+              Save
+            </Button>
+            <Button icon={<CloseOutlined />} onClick={handleCancel}>
+              Cancel
+            </Button>
+          </div>
+        </div>
       </Card>
     )
   }
@@ -161,15 +164,17 @@ const ActivityCard = ({ activity, onUpdate, onDelete }) => {
   return (
     <Card 
       size="small" 
+      className="activity-display-card"
       style={{ marginBottom: 12 }}
       bodyStyle={{ padding: 16 }}
       extra={
-        <Space>
+        <div className="activity-actions">
           <Button 
             type="text" 
             size="small" 
             icon={<EditOutlined />}
             onClick={() => setIsEditing(true)}
+            className="activity-action-btn"
           />
           <Popconfirm
             title="Delete activity?"
@@ -182,48 +187,43 @@ const ActivityCard = ({ activity, onUpdate, onDelete }) => {
               size="small" 
               danger
               icon={<DeleteOutlined />}
+              className="activity-action-btn"
             />
           </Popconfirm>
-        </Space>
+        </div>
       }
     >
-      <Row gutter={16} align="top">
-        <Col span={18}>
-          <Space direction="vertical" size="small" style={{ width: '100%' }}>
-            <Row align="middle" gutter={8}>
-              <Col>
-                <Text strong style={{ fontSize: '16px' }}>{activity.title}</Text>
-              </Col>
-              {activity.time && (
-                <Col>
-                  <Tag icon={<ClockCircleOutlined />} color="blue">
-                    {format(new Date(activity.time), 'HH:mm')}
-                  </Tag>
-                </Col>
-              )}
-              {activity.category && (
-                <Col>
-                  <Tag color={getCategoryColor(activity.category)}>
-                    {activity.category}
-                  </Tag>
-                </Col>
-              )}
-            </Row>
-            
-            {activity.location && (
-              <Text type="secondary">📍 {activity.location}</Text>
+      <div className="activity-content">
+        <div className="activity-header">
+          <Text strong className="activity-title">{activity.title}</Text>
+          <div className="activity-tags">
+            {activity.time && (
+              <Tag icon={<ClockCircleOutlined />} color="blue" className="activity-tag">
+                {format(new Date(activity.time), 'HH:mm')}
+              </Tag>
             )}
-            
-            {activity.description && (
-              <Text>{activity.description}</Text>
+            {activity.category && (
+              <Tag color={getCategoryColor(activity.category)} className="activity-tag">
+                {activity.category}
+              </Tag>
             )}
-            
-            {activity.notes && (
-              <Text type="secondary" italic>💡 {activity.notes}</Text>
-            )}
-          </Space>
-        </Col>
-      </Row>
+          </div>
+        </div>
+        
+        <div className="activity-details">
+          {activity.location && (
+            <Text type="secondary" className="activity-location">📍 {activity.location}</Text>
+          )}
+          
+          {activity.description && (
+            <Text className="activity-description">{activity.description}</Text>
+          )}
+          
+          {activity.notes && (
+            <Text type="secondary" italic className="activity-notes">💡 {activity.notes}</Text>
+          )}
+        </div>
+      </div>
     </Card>
   )
 }
@@ -323,93 +323,96 @@ const DayCard = ({ day, onUpdate }) => {
           type="dashed"
           icon={<PlusOutlined />}
           onClick={() => setIsAddingActivity(true)}
-          style={{ width: '100%' }}
+          className="add-activity-btn"
         >
           Add Activity
         </Button>
       ) : (
         <Card 
           size="small" 
+          className="add-activity-card"
           style={{ border: '2px dashed #52c41a' }}
           bodyStyle={{ padding: 16 }}
         >
-          <Space direction="vertical" style={{ width: '100%' }} size="middle">
-            <Row gutter={16}>
-              <Col span={12}>
-                <Input
-                  placeholder="Activity title *"
-                  value={newActivity.title}
-                  onChange={(e) => setNewActivity({ ...newActivity, title: e.target.value })}
-                />
-              </Col>
-              <Col span={6}>
-                <TimePicker
-                  format="HH:mm"
-                  value={newActivity.time}
-                  onChange={(time) => setNewActivity({ ...newActivity, time })}
-                  placeholder="Time"
-                  style={{ width: '100%' }}
-                />
-              </Col>
-              <Col span={6}>
-                <Select
-                  placeholder="Category"
-                  value={newActivity.category}
-                  onChange={(category) => setNewActivity({ ...newActivity, category })}
-                  style={{ width: '100%' }}
-                >
-                  <Option value="Food">🍽️ Food</Option>
-                  <Option value="Activity">🎯 Activity</Option>
-                  <Option value="Transport">🚗 Transport</Option>
-                  <Option value="Accommodation">🏨 Accommodation</Option>
-                  <Option value="Sightseeing">📸 Sightseeing</Option>
-                  <Option value="Shopping">🛍️ Shopping</Option>
-                  <Option value="Other">📌 Other</Option>
-                </Select>
-              </Col>
-            </Row>
+          <div className="add-activity-form">
+            <div className="activity-edit-row">
+              <Input
+                placeholder="Activity title *"
+                value={newActivity.title}
+                onChange={(e) => setNewActivity({ ...newActivity, title: e.target.value })}
+                className="activity-title-input"
+              />
+            </div>
             
-            <Input
-              placeholder="Location (optional)"
-              value={newActivity.location}
-              onChange={(e) => setNewActivity({ ...newActivity, location: e.target.value })}
-            />
+            <div className="activity-edit-row activity-meta-row">
+              <TimePicker
+                format="HH:mm"
+                value={newActivity.time}
+                onChange={(time) => setNewActivity({ ...newActivity, time })}
+                placeholder="Time"
+                className="activity-time-picker"
+              />
+              <Select
+                placeholder="Category"
+                value={newActivity.category}
+                onChange={(category) => setNewActivity({ ...newActivity, category })}
+                className="activity-category-select"
+              >
+                <Option value="Food">🍽️ Food</Option>
+                <Option value="Activity">🎯 Activity</Option>
+                <Option value="Transport">🚗 Transport</Option>
+                <Option value="Accommodation">🏨 Accommodation</Option>
+                <Option value="Sightseeing">📸 Sightseeing</Option>
+                <Option value="Shopping">🛍️ Shopping</Option>
+                <Option value="Other">📌 Other</Option>
+              </Select>
+            </div>
             
-            <TextArea
-              placeholder="Description"
-              value={newActivity.description}
-              onChange={(e) => setNewActivity({ ...newActivity, description: e.target.value })}
-              rows={2}
-            />
+            <div className="activity-edit-row">
+              <Input
+                placeholder="Location (optional)"
+                value={newActivity.location}
+                onChange={(e) => setNewActivity({ ...newActivity, location: e.target.value })}
+              />
+            </div>
             
-            <TextArea
-              placeholder="Additional notes (optional)"
-              value={newActivity.notes}
-              onChange={(e) => setNewActivity({ ...newActivity, notes: e.target.value })}
-              rows={2}
-            />
+            <div className="activity-edit-row">
+              <TextArea
+                placeholder="Description"
+                value={newActivity.description}
+                onChange={(e) => setNewActivity({ ...newActivity, description: e.target.value })}
+                rows={2}
+              />
+            </div>
             
-            <Row justify="end">
-              <Space>
-                <Button type="primary" onClick={addActivity}>
-                  Add Activity
-                </Button>
-                <Button onClick={() => {
-                  setIsAddingActivity(false)
-                  setNewActivity({
-                    title: '',
-                    description: '',
-                    time: null,
-                    category: '',
-                    location: '',
-                    notes: ''
-                  })
-                }}>
-                  Cancel
-                </Button>
-              </Space>
-            </Row>
-          </Space>
+            <div className="activity-edit-row">
+              <TextArea
+                placeholder="Additional notes (optional)"
+                value={newActivity.notes}
+                onChange={(e) => setNewActivity({ ...newActivity, notes: e.target.value })}
+                rows={2}
+              />
+            </div>
+            
+            <div className="activity-edit-actions">
+              <Button type="primary" onClick={addActivity}>
+                Add Activity
+              </Button>
+              <Button onClick={() => {
+                setIsAddingActivity(false)
+                setNewActivity({
+                  title: '',
+                  description: '',
+                  time: null,
+                  category: '',
+                  location: '',
+                  notes: ''
+                })
+              }}>
+                Cancel
+              </Button>
+            </div>
+          </div>
         </Card>
       )}
     </div>

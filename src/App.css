@@ -1,43 +1,203 @@
 /* Trip Planner Styles */
 #root {
   min-height: 100vh;
-  background: #f5f5f5;
+  background: #f8f9fa;
+  padding: 0;
 }
 
-/* Custom scrollbar */
-::-webkit-scrollbar {
-  width: 8px;
+/* Main container */
+.trip-planner-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 16px;
 }
 
-::-webkit-scrollbar-track {
-  background: #f1f1f1;
-  border-radius: 4px;
+/* Trip Header Styles */
+.trip-header {
+  background: #fff;
+  border: 1px solid #e8e8e8;
+  border-radius: 12px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
 }
 
-::-webkit-scrollbar-thumb {
-  background: #c1c1c1;
-  border-radius: 4px;
+.trip-header-content {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 16px;
 }
 
-::-webkit-scrollbar-thumb:hover {
-  background: #a8a8a8;
+.trip-title-section {
+  flex: 1;
+  min-width: 0;
 }
 
-/* Card hover effects */
-.ant-card:hover {
-  transform: translateY(-2px);
+.trip-title-display {
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 4px 8px;
+  border-radius: 8px;
+  transition: background-color 0.2s ease;
+}
+
+.trip-title-display:hover {
+  background-color: #f5f5f5;
+}
+
+.trip-title {
+  color: #262626;
+  font-size: 20px !important;
+  font-weight: 600 !important;
+  line-height: 1.3 !important;
+  word-break: break-word;
+}
+
+.edit-title-btn {
+  opacity: 0;
+  transition: opacity 0.2s ease;
+}
+
+.trip-title-display:hover .edit-title-btn {
+  opacity: 1;
+}
+
+.trip-title-edit {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.trip-title-input {
+  flex: 1;
+  font-size: 18px !important;
+  font-weight: 600 !important;
+}
+
+.title-edit-actions {
+  display: flex;
+  gap: 4px;
+}
+
+.trip-summary {
+  color: #8c8c8c !important;
+  font-size: 14px !important;
+  margin-top: 4px;
+  display: block;
+}
+
+.trip-actions {
+  flex-shrink: 0;
+}
+
+.export-btn {
+  border-radius: 8px;
+  height: 40px;
+  padding: 0 16px;
+  font-weight: 500;
+}
+
+/* Add Day Card */
+.add-day-card {
+  border-radius: 12px;
+  border: 2px dashed #d9d9d9;
+  transition: border-color 0.3s ease;
+}
+
+.add-day-card:hover {
+  border-color: #1890ff;
+}
+
+.add-day-btn {
+  width: 100%;
+  height: 50px;
+  font-size: 16px;
+  font-weight: 500;
+  border: none;
+  background: transparent;
+}
+
+.add-day-form {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.date-picker-container {
+  width: 100%;
+}
+
+.date-picker {
+  width: 100%;
+  height: 40px;
+}
+
+.add-day-actions {
+  display: flex;
+  gap: 8px;
+  justify-content: flex-end;
+}
+
+.add-btn,
+.cancel-btn {
+  border-radius: 8px;
+  height: 36px;
+  padding: 0 16px;
+}
+
+/* Day Cards */
+.days-container {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.day-card {
+  border-radius: 12px;
+  border: 1px solid #e8e8e8;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
   transition: all 0.3s ease;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
 }
 
-/* Activity card styling */
-.activity-card {
-  border-left: 4px solid #1890ff;
-  margin-bottom: 12px;
+.day-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
 }
 
-.activity-card:hover {
-  border-left-color: #40a9ff;
+.day-card-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+}
+
+.day-info {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex: 1;
+  min-width: 0;
+}
+
+.calendar-icon {
+  color: #1890ff;
+  font-size: 16px;
+}
+
+.day-date {
+  font-size: 16px !important;
+  color: #262626 !important;
+}
+
+.delete-day-btn {
+  flex-shrink: 0;
+}
+
+.empty-state {
+  border-radius: 12px;
+  text-align: center;
+  padding: 40px 20px;
 }
 
 /* Time tag styling */
@@ -69,6 +229,56 @@
 /* Empty state styling */
 .ant-empty {
   padding: 40px 20px;
+}
+
+/* App Header Styles */
+.app-header {
+  background: #fff !important;
+  border-bottom: 1px solid #e8e8e8;
+  padding: 0 !important;
+  height: 56px !important;
+  line-height: 56px !important;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+}
+
+.header-content {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 16px;
+  height: 100%;
+  display: flex;
+  align-items: center;
+}
+
+.app-title {
+  margin: 0 !important;
+  color: #262626 !important;
+  font-size: 18px !important;
+  font-weight: 600 !important;
+  line-height: 1 !important;
+}
+
+.app-content {
+  padding: 0 !important;
+  background: #f8f9fa !important;
+  flex: 1;
+}
+
+@media (max-width: 768px) {
+  .app-header {
+    height: 48px !important;
+    line-height: 48px !important;
+  }
+
+  .header-content {
+    padding: 0 12px;
+  }
+
+  .app-title {
+    font-size: 16px !important;
+  }
 }
 
 /* Responsive design */
@@ -120,4 +330,461 @@
   border: none;
   background: rgba(255, 255, 255, 0.9);
   border-radius: 8px;
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: #f1f1f1;
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #c1c1c1;
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #a8a8a8;
+}
+
+/* Activity card styling */
+.activity-card {
+  border-left: 4px solid #1890ff;
+  margin-bottom: 12px;
+  border-radius: 8px;
+}
+
+.activity-card:hover {
+  border-left-color: #40a9ff;
+}
+
+/* Activity Forms Styles */
+.activity-edit-card,
+.add-activity-card {
+  border-radius: 8px;
+}
+
+.activity-edit-form,
+.add-activity-form {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.activity-edit-row {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.activity-meta-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+}
+
+.activity-title-input {
+  font-weight: 500;
+}
+
+.activity-time-picker,
+.activity-category-select {
+  width: 100%;
+}
+
+.activity-edit-actions {
+  display: flex;
+  gap: 8px;
+  justify-content: flex-end;
+  margin-top: 4px;
+}
+
+.add-activity-btn {
+  width: 100%;
+  height: 44px;
+  font-size: 14px;
+  font-weight: 500;
+  border-radius: 8px;
+}
+
+/* Activity Display Cards */
+.ant-card-small .ant-card-body {
+  padding: 12px;
+}
+
+.ant-card-extra {
+  margin-left: auto;
+}
+
+/* Activity Display Card Styles */
+.activity-display-card {
+  border-radius: 8px;
+  border-left: 4px solid #1890ff;
+  transition: all 0.2s ease;
+}
+
+.activity-display-card:hover {
+  border-left-color: #40a9ff;
+  box-shadow: 0 2px 8px rgba(24, 144, 255, 0.1);
+}
+
+.activity-content {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.activity-header {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.activity-title {
+  font-size: 16px !important;
+  font-weight: 600 !important;
+  color: #262626 !important;
+  line-height: 1.4;
+}
+
+.activity-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4px;
+}
+
+.activity-tag {
+  font-size: 12px;
+  border-radius: 12px;
+}
+
+.activity-details {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.activity-location {
+  font-size: 14px !important;
+}
+
+.activity-description {
+  font-size: 14px !important;
+  line-height: 1.5;
+  color: #595959 !important;
+}
+
+.activity-notes {
+  font-size: 13px !important;
+  line-height: 1.4;
+}
+
+.activity-actions {
+  display: flex;
+  gap: 4px;
+}
+
+.activity-action-btn {
+  padding: 4px !important;
+  height: auto !important;
+}
+
+/* Mobile responsive activity display */
+@media (max-width: 768px) {
+  .activity-header {
+    gap: 6px;
+  }
+
+  .activity-title {
+    font-size: 15px !important;
+  }
+
+  .activity-tags {
+    margin-top: 2px;
+  }
+
+  .activity-tag {
+    font-size: 11px;
+  }
+
+  .activity-location,
+  .activity-description {
+    font-size: 13px !important;
+  }
+
+  .activity-notes {
+    font-size: 12px !important;
+  }
+
+  .activity-display-card .ant-card-extra {
+    margin-top: 4px;
+  }
+
+  .activity-actions {
+    flex-direction: column;
+    gap: 2px;
+  }
+}
+
+@media (max-width: 480px) {
+  .activity-display-card .ant-card-body {
+    padding: 12px;
+  }
+
+  .activity-title {
+    font-size: 14px !important;
+  }
+
+  .activity-content {
+    gap: 6px;
+  }
+
+  .activity-details {
+    gap: 4px;
+  }
+}
+
+/* Mobile responsive activity forms */
+@media (max-width: 768px) {
+  .activity-meta-row {
+    grid-template-columns: 1fr;
+    gap: 8px;
+  }
+
+  .activity-edit-actions {
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  .activity-edit-actions .ant-btn {
+    width: 100%;
+  }
+
+  .add-activity-btn {
+    height: 48px;
+    font-size: 16px;
+  }
+
+  .activity-edit-form,
+  .add-activity-form {
+    gap: 16px;
+  }
+
+  .activity-edit-row {
+    gap: 12px;
+  }
+}
+
+@media (max-width: 480px) {
+  .activity-edit-card .ant-card-body,
+  .add-activity-card .ant-card-body {
+    padding: 12px;
+  }
+
+  .activity-edit-form,
+  .add-activity-form {
+    gap: 12px;
+  }
+
+  .ant-input,
+  .ant-select,
+  .ant-picker {
+    font-size: 16px;
+    height: 40px;
+  }
+
+  .ant-input.ant-input-lg,
+  .ant-select.ant-select-lg .ant-select-selector,
+  .ant-picker.ant-picker-lg {
+    height: 44px;
+  }
+}
+
+/* Mobile-First Responsive Design */
+@media (max-width: 768px) {
+  .trip-planner-container {
+    padding: 12px;
+  }
+
+  .trip-header-content {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 12px;
+  }
+
+  .trip-title {
+    font-size: 18px !important;
+  }
+
+  .trip-title-edit {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 12px;
+  }
+
+  .title-edit-actions {
+    justify-content: flex-end;
+  }
+
+  .export-btn {
+    width: 100%;
+    justify-content: center;
+  }
+
+  .export-text {
+    display: none;
+  }
+
+  .export-btn::after {
+    content: "PDF";
+  }
+
+  .add-day-form {
+    gap: 16px;
+  }
+
+  .add-day-actions {
+    flex-direction: column;
+  }
+
+  .add-btn,
+  .cancel-btn {
+    width: 100%;
+  }
+
+  .day-card-header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 8px;
+  }
+
+  .day-info {
+    width: 100%;
+  }
+
+  .day-date {
+    font-size: 14px !important;
+  }
+
+  .delete-day-btn {
+    align-self: flex-end;
+  }
+
+  /* Ant Design component overrides for mobile */
+  .ant-card {
+    margin-bottom: 12px;
+  }
+
+  .ant-card-head {
+    padding: 12px 16px;
+  }
+
+  .ant-card-body {
+    padding: 16px;
+  }
+
+  .ant-input {
+    font-size: 16px;
+  }
+
+  .ant-btn {
+    font-size: 14px;
+    height: 36px;
+  }
+
+  .ant-picker {
+    font-size: 16px;
+  }
+}
+
+@media (max-width: 480px) {
+  .trip-planner-container {
+    padding: 8px;
+  }
+
+  .trip-title {
+    font-size: 16px !important;
+  }
+
+  .trip-summary {
+    font-size: 13px !important;
+  }
+
+  .add-day-btn {
+    height: 44px;
+    font-size: 14px;
+  }
+
+  .day-date {
+    font-size: 13px !important;
+  }
+
+  .ant-card-head {
+    padding: 8px 12px;
+  }
+
+  .ant-card-body {
+    padding: 12px;
+  }
+
+  .export-btn {
+    height: 36px;
+  }
+}
+
+/* Touch-friendly improvements */
+@media (hover: none) and (pointer: coarse) {
+  .trip-title-display:hover {
+    background-color: transparent;
+  }
+
+  .edit-title-btn {
+    opacity: 1;
+  }
+
+  .ant-btn {
+    min-height: 44px;
+    touch-action: manipulation;
+  }
+
+  .ant-card:hover {
+    transform: none;
+  }
+
+  .day-card:hover {
+    transform: none;
+  }
+}
+
+/* High contrast mode support */
+@media (prefers-contrast: high) {
+  .trip-header {
+    border: 2px solid #000;
+  }
+
+  .day-card {
+    border: 2px solid #000;
+  }
+
+  .add-day-card {
+    border: 2px solid #000;
+  }
+}
+
+/* Reduced motion support */
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+
+  .ant-btn:hover,
+  .day-card:hover {
+    transform: none;
+  }
 }

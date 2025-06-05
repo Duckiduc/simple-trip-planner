@@ -12,22 +12,19 @@ function App() {
         token: {
           colorPrimary: '#1890ff',
           borderRadius: 8,
+          fontFamily: '-apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif'
         },
       }}
     >
-      <Layout style={{ minHeight: '100vh', background: '#f5f5f5' }}>
-        <Header style={{ 
-          background: '#fff', 
-          boxShadow: '0 2px 8px rgba(0,0,0,0.1)',
-          padding: '0 24px',
-          display: 'flex',
-          alignItems: 'center'
-        }}>
-          <Title level={2} style={{ margin: 0, color: '#1890ff' }}>
-            🌍 Simple Trip Planner
-          </Title>
+      <Layout style={{ minHeight: '100vh', background: '#f8f9fa' }}>
+        <Header className="app-header">
+          <div className="header-content">
+            <Title level={3} className="app-title">
+              ✈️ Trip Planner
+            </Title>
+          </div>
         </Header>
-        <Content style={{ padding: '24px', background: '#f5f5f5' }}>
+        <Content className="app-content">
           <TripPlanner />
         </Content>
       </Layout>
