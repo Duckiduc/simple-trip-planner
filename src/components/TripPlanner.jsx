@@ -25,6 +25,7 @@ import {
 import { format } from 'date-fns'
 import DayCard from './DayCard'
 import { exportToPDF } from '../utils/pdfExport'
+import { exportToCalendar, exportTripOverview } from '../utils/calendarExport'
 
 const { Title, Text } = Typography
 
@@ -98,6 +99,40 @@ const TripPlanner = () => {
     }
   }
 
+  const handleExportCalendar = async () => {
+    console.log('Calendar export button clicked', { days: days.length, sortedDays })
+    
+    if (days.length === 0) {
+      message.warning('Please add some days to your trip before exporting to calendar')
+      return
+    }
+
+    try {
+      message.loading({ content: 'Generating calendar file...', key: 'calendar' })
+      await exportToCalendar(sortedDays, tripTitle)
+      message.success({ content: 'Calendar exported successfully!', key: 'calendar' })
+    } catch (error) {
+      message.error({ content: 'Failed to export calendar', key: 'calendar' })
+      console.error('Calendar export error:', error)
+    }
+  }
+
+  const handleExportTripOverview = async () => {
+    if (days.length === 0) {
+      message.warning('Please add some days to your trip before exporting overview')
+      return
+    }
+
+    try {
+      message.loading({ content: 'Generating trip overview...', key: 'overview' })
+      await exportTripOverview(sortedDays, tripTitle)
+      message.success({ content: 'Trip overview exported successfully!', key: 'overview' })
+    } catch (error) {
+      message.error({ content: 'Failed to export trip overview', key: 'overview' })
+      console.error('Trip overview export error:', error)
+    }
+  }
+
   return (
     <div className="trip-planner-container">
       {/* Trip Header */}
@@ -147,15 +182,39 @@ const TripPlanner = () => {
           </div>
           
           <div className="trip-actions">
-            <Button 
-              type="primary"
-              icon={<DownloadOutlined />}
-              onClick={handleExportPDF}
-              disabled={days.length === 0}
-              className="export-btn"
-            >
-              <span className="export-text">Export PDF</span>
-            </Button>
+            <Space direction="vertical" size="small" style={{ width: '100%' }}>
+              <Button 
+                type="primary"
+                icon={<DownloadOutlined />}
+                onClick={handleExportPDF}
+                disabled={days.length === 0}
+                className="export-btn"
+                block
+              >
+                <span className="export-text">Export PDF</span>
+              </Button>
+              <Space.Compact style={{ width: '100%' }}>
+                <Button 
+                  icon={<CalendarOutlined />}
+                  onClick={handleExportCalendar}
+                  disabled={days.length === 0}
+                  className="export-btn calendar-btn"
+                  style={{ flex: 1 }}
+                >
+                  <span className="export-text">Add to Calendar</span>
+                </Button>
+                <Button 
+                  icon={<CalendarOutlined />}
+                  onClick={handleExportTripOverview}
+                  disabled={days.length === 0}
+                  className="export-btn overview-btn"
+                  style={{ flex: 1 }}
+                  title="Export trip overview"
+                >
+                  <span className="export-text">Overview</span>
+                </Button>
+              </Space.Compact>
+            </Space>
           </div>
         </div>
       </Card>

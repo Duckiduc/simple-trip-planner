@@ -98,6 +98,37 @@
   font-weight: 500;
 }
 
+/* Calendar export button styling */
+.calendar-btn {
+  border-radius: 8px 0 0 8px !important;
+  height: 40px;
+  font-weight: 500;
+  background: #52c41a;
+  border-color: #52c41a;
+  color: white;
+}
+
+.calendar-btn:hover {
+  background: #73d13d !important;
+  border-color: #73d13d !important;
+  color: white !important;
+}
+
+.overview-btn {
+  border-radius: 0 8px 8px 0 !important;
+  height: 40px;
+  font-weight: 500;
+  background: #722ed1;
+  border-color: #722ed1;
+  color: white;
+}
+
+.overview-btn:hover {
+  background: #9254de !important;
+  border-color: #9254de !important;
+  color: white !important;
+}
+
 /* Add Day Card */
 .add-day-card {
   border-radius: 12px;
@@ -170,6 +201,8 @@
   justify-content: space-between;
   align-items: center;
   width: 100%;
+  min-height: 32px;
+  padding: 0;
 }
 
 .day-info {
@@ -188,6 +221,8 @@
 .day-date {
   font-size: 16px !important;
   color: #262626 !important;
+  line-height: 1.4 !important;
+  margin: 0 !important;
 }
 
 .delete-day-btn {
@@ -198,6 +233,62 @@
   border-radius: 12px;
   text-align: center;
   padding: 40px 20px;
+}
+
+/* Fix card header spacing */
+.day-card .ant-card-head {
+  padding: 8px 16px !important;
+  min-height: 40px !important;
+}
+
+.day-card .ant-card-head-wrapper {
+  width: 100% !important;
+  display: flex !important;
+  align-items: center !important;
+}
+
+.day-card .ant-card-head-title {
+  padding: 0 !important;
+  line-height: 1.4 !important;
+  display: flex !important;
+  align-items: center !important;
+  width: 100% !important;
+  flex: 1 !important;
+}
+
+.day-card .ant-card-extra {
+  margin-left: 0 !important;
+  flex-shrink: 0 !important;
+}
+
+/* Day card header content alignment */
+.day-card-header {
+  display: flex !important;
+  justify-content: space-between !important;
+  align-items: center !important;
+  width: 100% !important;
+  min-height: 32px !important;
+  padding: 0 !important;
+}
+
+.trip-header .ant-card-head {
+  padding: 12px 16px !important;
+  min-height: 48px !important;
+}
+
+.trip-header .ant-card-head-title {
+  padding: 0 !important;
+  line-height: 1.4 !important;
+  display: flex !important;
+  align-items: center !important;
+}
+
+/* Activity card headers */
+.activity-display-card .ant-card-head,
+.activity-edit-card .ant-card-head,
+.add-activity-card .ant-card-head {
+  padding: 8px 12px !important;
+  min-height: 36px !important;
 }
 
 /* Time tag styling */
@@ -484,13 +575,19 @@
 }
 
 .activity-actions {
-  display: flex;
-  gap: 4px;
+  display: flex !important;
+  gap: 4px !important;
+  align-items: center !important;
+  flex-direction: row !important;
 }
 
 .activity-action-btn {
   padding: 4px !important;
   height: auto !important;
+  min-width: 32px !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
 }
 
 /* Mobile responsive activity display */
@@ -524,9 +621,10 @@
     margin-top: 4px;
   }
 
+  /* Keep activity actions horizontal on mobile */
   .activity-actions {
-    flex-direction: column;
-    gap: 2px;
+    flex-direction: row !important;
+    gap: 2px !important;
   }
 }
 
@@ -643,6 +741,18 @@
     content: "PDF";
   }
 
+  .calendar-btn::after {
+    content: "Calendar";
+  }
+
+  .overview-btn::after {
+    content: "Overview";
+  }
+
+  .trip-actions .ant-space-compact {
+    margin-top: 4px;
+  }
+
   .add-day-form {
     gap: 16px;
   }
@@ -657,21 +767,19 @@
   }
 
   .day-card-header {
-    flex-direction: column;
-    align-items: flex-start;
-    gap: 8px;
+    justify-content: space-between !important;
+    align-items: center !important;
+    flex-direction: row !important;
+    gap: 8px !important;
   }
 
   .day-info {
-    width: 100%;
+    width: auto !important;
+    flex: 1 !important;
   }
 
   .day-date {
     font-size: 14px !important;
-  }
-
-  .delete-day-btn {
-    align-self: flex-end;
   }
 
   /* Ant Design component overrides for mobile */
@@ -680,7 +788,17 @@
   }
 
   .ant-card-head {
-    padding: 12px 16px;
+    padding: 8px 12px !important;
+  }
+
+  .day-card .ant-card-head {
+    padding: 6px 12px !important;
+    min-height: 36px !important;
+  }
+
+  .trip-header .ant-card-head {
+    padding: 8px 12px !important;
+    min-height: 40px !important;
   }
 
   .ant-card-body {
@@ -731,8 +849,19 @@
     padding: 12px;
   }
 
-  .export-btn {
+  .export-btn,
+  .calendar-btn,
+  .overview-btn {
     height: 36px;
+    font-size: 12px;
+  }
+
+  .calendar-btn::after {
+    content: "📅";
+  }
+
+  .overview-btn::after {
+    content: "📋";
   }
 }
 
