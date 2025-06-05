@@ -76,11 +76,11 @@
   .ant-card .ant-card-head-title {
     font-size: 14px;
   }
-  
+
   .ant-row {
     flex-direction: column;
   }
-  
+
   .ant-col {
     width: 100% !important;
     margin-bottom: 8px;
