@@ -1,0 +1,123 @@
+/* Trip Planner Styles */
+#root {
+  min-height: 100vh;
+  background: #f5f5f5;
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: #f1f1f1;
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #c1c1c1;
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #a8a8a8;
+}
+
+/* Card hover effects */
+.ant-card:hover {
+  transform: translateY(-2px);
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+/* Activity card styling */
+.activity-card {
+  border-left: 4px solid #1890ff;
+  margin-bottom: 12px;
+}
+
+.activity-card:hover {
+  border-left-color: #40a9ff;
+}
+
+/* Time tag styling */
+.ant-tag {
+  border-radius: 12px;
+  font-size: 12px;
+}
+
+/* Button hover effects */
+.ant-btn:hover {
+  transform: translateY(-1px);
+  transition: all 0.2s ease;
+}
+
+/* PDF export button special styling */
+.pdf-export-btn {
+  background: linear-gradient(45deg, #ff6b6b, #ee5a24);
+  border: none;
+  color: white;
+  font-weight: bold;
+}
+
+.pdf-export-btn:hover {
+  background: linear-gradient(45deg, #ee5a24, #ff6b6b);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(238, 90, 36, 0.3);
+}
+
+/* Empty state styling */
+.ant-empty {
+  padding: 40px 20px;
+}
+
+/* Responsive design */
+@media (max-width: 768px) {
+  .ant-card .ant-card-head-title {
+    font-size: 14px;
+  }
+  
+  .ant-row {
+    flex-direction: column;
+  }
+  
+  .ant-col {
+    width: 100% !important;
+    margin-bottom: 8px;
+  }
+}
+
+/* Animation for new items */
+@keyframes slideIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.slide-in {
+  animation: slideIn 0.3s ease-out;
+}
+
+/* Gradient backgrounds */
+.gradient-header {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  color: white;
+}
+
+.gradient-primary {
+  background: linear-gradient(45deg, #1890ff, #36cfc9);
+}
+
+/* Custom input styling */
+.trip-title-input {
+  font-size: 24px !important;
+  font-weight: bold;
+  border: none;
+  background: rgba(255, 255, 255, 0.9);
+  border-radius: 8px;
+}
