@@ -7,7 +7,7 @@
 
 /* Main container */
 .trip-planner-container {
-  max-width: 1200px;
+  width: 100%;
   margin: 0 auto;
   padding: 16px;
 }
@@ -244,7 +244,7 @@
 }
 
 .header-content {
-  max-width: 1200px;
+  width: 100%;
   margin: 0 auto;
   padding: 0 16px;
   height: 100%;
@@ -273,7 +273,7 @@
   }
 
   .header-content {
-    padding: 0 12px;
+    padding: 0 4px;
   }
 
   .app-title {
@@ -607,7 +607,7 @@
 /* Mobile-First Responsive Design */
 @media (max-width: 768px) {
   .trip-planner-container {
-    padding: 12px;
+    padding: 4px;
   }
 
   .trip-header-content {
@@ -703,7 +703,7 @@
 
 @media (max-width: 480px) {
   .trip-planner-container {
-    padding: 8px;
+    padding: 2px;
   }
 
   .trip-title {
